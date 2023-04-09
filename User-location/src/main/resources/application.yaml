@@ -1,0 +1,37 @@
+
+server:
+  port: 8080
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:3306/userlocation
+    username: root
+    password: Sai369uy@
+    driverClassname: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+
+
+
+
+
+
+#spring:
+#  datasource:
+#    driverClassName: org.hsqldb.jdbc.JDBCDriver
+#    url: jdbc:hsqldb:file:/path/to/your/db/hsql.db
+#    username: sa
+#    password:
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#    database-platform: org.hibernate.dialect.HSQLDialect
