@@ -1,14 +1,14 @@
 package com.Userlocation.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 import javax.persistence.*;
 
+
 @Entity
-@Data
+@Getter
+@Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -16,8 +16,9 @@ public class UserLocation {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @JsonIgnore
         private Long id;
-
+        @Column(unique = true)
         private String name;
 
         private double latitude;
@@ -26,7 +27,11 @@ public class UserLocation {
 
         @Transient
         private double distance;
+        @JsonIgnore
+        @OneToOne(mappedBy = "userLocation")
+        private UserDetails userDetails;
 
-        // getters and setters
+
+
 
 }
