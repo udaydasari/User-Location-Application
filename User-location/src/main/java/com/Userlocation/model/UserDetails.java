@@ -3,7 +3,6 @@ package com.Userlocation.model;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.swing.*;
 @Entity
 @Getter
 @Setter

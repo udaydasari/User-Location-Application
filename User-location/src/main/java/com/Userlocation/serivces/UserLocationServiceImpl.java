@@ -1,5 +1,6 @@
 package com.Userlocation.serivces;
 
+import com.Userlocation.model.UserDetails;
 import com.Userlocation.model.UserLocation;
 import com.Userlocation.repository.UserDetailsRepository;
 import com.Userlocation.repository.UserLocationRepository;
@@ -25,6 +26,8 @@ public class UserLocationServiceImpl implements UserLocationService {
     private UserLocationRepository userLocationRepository;
     @Autowired
     private UserDetailsRepository userDetailsRepository;
+
+
 
     @Override
     public boolean updateDate(UserLocation userLocation) {
@@ -65,6 +68,13 @@ public class UserLocationServiceImpl implements UserLocationService {
             return new ResponseEntity<>(nearestUsers, HttpStatus.OK);
         }
         else
-            return new ResponseEntity<>(allUsers,HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(allUsers,HttpStatus.CONFLICT);
+    }
+
+    @Override
+    public ResponseEntity<Long> deleteFromTable(long id) {
+        userDetailsRepository.delete(userDetailsRepository.findById(id).get());
+        return new ResponseEntity<>(id,HttpStatus.OK);
+
     }
 }

@@ -9,4 +9,6 @@ public interface UserLocationService {
     boolean updateDate(UserLocation userLocation);
 
     ResponseEntity<List<UserLocation>> getUsersNearBy(int n);
+
+    ResponseEntity<Long> deleteFromTable(long id);
 }

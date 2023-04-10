@@ -6,8 +6,10 @@ logging:
     org:
       hibernate:
         SQL: debug
+
 spring:
   main:
+    allow-circular-references: true
     allow-bean-definition-overriding: true
   datasource:
     url: jdbc:mysql://${DB_HOST:localhost}:3306/userlocation
