@@ -27,4 +27,11 @@ public class UserDetails {
     @JoinColumn(name = "user_location_id", referencedColumnName = "id")
     private UserLocation userLocation;
 
+    public UserDetails(long id, String john, String doe) {
+        this.userId= id;
+        this.userName=john;
+        this.password=doe;
+
+
+    }
 }

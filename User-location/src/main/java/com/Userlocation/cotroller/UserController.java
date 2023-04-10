@@ -19,18 +19,24 @@ public class UserController {
    @Autowired
    private UserLocationService userLocationService;
 
+    @Autowired
+    public UserController(UserLocationService userLocationService) {
+        this.userLocationService = userLocationService;
+    }
+
 
     @PostMapping("/create_data")
     @PreAuthorize("hasAuthority('ADMIN')")
     public String createData() {
 
-//        userRepository.createTable();
+
         return "Table created successfully";
     }
 
     @PostMapping("/update_data")
     public ResponseEntity<UserLocation> updateData(@RequestBody UserLocation userLocation, Authentication authentication)  {
         String username = authentication.getName();
+        //Checking the logged user and updating user name are same are not
         if (!userLocation.getName().equals(username)) {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
@@ -44,7 +50,7 @@ public class UserController {
     @GetMapping("/get_users/{n}")
     @PreAuthorize("hasAuthority('READER')")
     public ResponseEntity<List<UserLocation>> getUsers(@PathVariable int n) {
-
+//        if(n==0) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         return userLocationService.getUsersNearBy(n);
 
     }

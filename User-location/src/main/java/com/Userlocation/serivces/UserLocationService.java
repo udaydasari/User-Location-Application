@@ -11,4 +11,6 @@ public interface UserLocationService {
     ResponseEntity<List<UserLocation>> getUsersNearBy(int n);
 
     ResponseEntity<Long> deleteFromTable(long id);
+
+   
 }

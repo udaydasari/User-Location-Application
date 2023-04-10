@@ -73,7 +73,8 @@ public class UserLocationServiceImpl implements UserLocationService {
 
     @Override
     public ResponseEntity<Long> deleteFromTable(long id) {
-        userDetailsRepository.delete(userDetailsRepository.findById(id).get());
+        userDetailsRepository.delete(userDetailsRepository.findById(id)
+                .orElseThrow(()->new RuntimeException("No customer found to delete")));
         return new ResponseEntity<>(id,HttpStatus.OK);
 
     }
